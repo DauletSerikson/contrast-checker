@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>WCAG Contrast & Typography Checker</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="container">
+    <h1>WCAG Contrast & Typography Checker</h1>
+    <p class="muted">Проверь контраст и типографику по WCAG 2.2 (AA/AAA). Сохраняй пресеты, делись ссылкой.</p>
+
+    <section class="card controls">
+      <div class="row">
+        <label>
+          Фон
+          <input type="color" id="bg" value="#0b0f14"/>
+          <input type="text" id="bgHex" value="#0b0f14" class="hex"/>
+        </label>
+        <label>
+          Текст
+          <input type="color" id="fg" value="#e5e7eb"/>
+          <input type="text" id="fgHex" value="#e5e7eb" class="hex"/>
+        </label>
+        <button id="swap" class="btn btn-secondary" type="button">Swap</button>
+        <button id="copyLink" class="btn" type="button">Copy Link</button>
+      </div>
+
+      <div class="row">
+        <label>
+          Размер (px)
+          <input type="range" id="fontSize" min="12" max="48" value="18"/>
+          <span id="fontSizeVal">18</span>
+        </label>
+        <label>
+          Жирность
+          <select id="fontWeight">
+            <option value="400" selected>Normal (400)</option>
+            <option value="600">Semibold (600)</option>
+            <option value="700">Bold (700)</option>
+          </select>
+        </label>
+        <label>
+          Межстрочный
+          <input type="range" id="lineHeight" min="1.1" max="2.0" step="0.05" value="1.5"/>
+          <span id="lineHeightVal">1.5</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="card result">
+      <div class="ratio">
+        Контраст: <strong id="ratio">–</strong>
+      </div>
+      <div class="badges">
+        <span id="aaNormal" class="badge">AA (normal)</span>
+        <span id="aaaNormal" class="badge">AAA (normal)</span>
+        <span id="aaLarge" class="badge">AA (large)</span>
+        <span id="aaaLarge" class="badge">AAA (large)</span>
+      </div>
+    </section>
+
+    <section class="card preview" id="preview">
+      <h2 id="sampleTitle">Заголовок предпросмотра</h2>
+      <p id="sampleText">
+        Это пример абзаца. Измени цвет фона/текста, размер, жирность и межстрочный интервал — сразу увидишь,
+        как это влияет на контраст и читаемость.
+      </p>
+      <button class="btn ghost" type="button">Пример кнопки</button>
+    </section>
+
+    <section class="card">
+      <h3>Последние пресеты</h3>
+      <ul id="history"></ul>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
